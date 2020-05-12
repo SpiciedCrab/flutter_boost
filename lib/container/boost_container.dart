@@ -171,7 +171,18 @@ class BoostContainerState extends NavigatorState {
               widget.initialRoute ?? Navigator.defaultRouteName
           )
       );
+      
+        widget.onGenerateInitialRoutes(
+            this,
+            widget.initialRoute ?? Navigator.defaultRouteName
+        )
+      );
     }
+  }
+
+  @override
+  void didUpdateWidget(Navigator oldWidget) {
+    super.didUpdateWidget(oldWidget);
   }
 
   @override
