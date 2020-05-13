@@ -710,7 +710,11 @@ public class XFlutterView extends FrameLayout {
     flutterRenderer.removeIsDisplayingFlutterUiListener(flutterUiDisplayListener);
     flutterRenderer.stopRenderingToSurface();
     flutterRenderer.setSemanticsEnabled(false);
-    renderSurface.detachFromRenderer();
+    try {
+      renderSurface.detachFromRenderer();
+    } catch (Exception e) {
+
+    }
 
     flutterEngine = null;
 
