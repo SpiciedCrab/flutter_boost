@@ -38,7 +38,7 @@ void main() {
     final MockBoostChannel boostChannel = MockBoostChannel();
     ContainerCoordinator(boostChannel);
 
-    final Map<String, dynamic> arguments = <String, dynamic>{};
+    final Map<dynamic,dynamic> arguments = <dynamic,dynamic>{};
     arguments['pageName'] = 'pageName';
     arguments['params'] = <dynamic, dynamic>{};
     arguments['uniqueId'] = 'xxxxx';
@@ -97,7 +97,7 @@ void main() {
       expect(e, isNoSuchMethodError);
     }
 
-    final Map<String, dynamic> arg = <String, dynamic>{
+    final Map<dynamic,dynamic> arg = <dynamic,dynamic>{
       'type': 'backPressedCallback'
     };
     try {
@@ -106,21 +106,21 @@ void main() {
       expect(e, isNoSuchMethodError);
     }
 
-    final Map<String, dynamic> arg2 = <String, dynamic>{'type': 'foreground'};
+    final Map<dynamic,dynamic> arg2 = <dynamic,dynamic>{'type': 'foreground'};
     try {
       boostChannel.testEventListener('lifecycle', arg2);
     } catch (e) {
       expect(e, isNoSuchMethodError);
     }
 
-    final Map<String, dynamic> arg3 = <String, dynamic>{'type': 'background'};
+    final Map<dynamic,dynamic> arg3 = <dynamic,dynamic>{'type': 'background'};
     try {
       boostChannel.testEventListener('lifecycle', arg3);
     } catch (e) {
       expect(e, isNoSuchMethodError);
     }
 
-    final Map<String, dynamic> arg4 = <String, dynamic>{
+    final Map<dynamic,dynamic> arg4 = <dynamic,dynamic>{
       'type': 'scheduleFrame'
     };
     try {

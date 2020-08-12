@@ -42,7 +42,7 @@ class SecondRouteWidget extends StatelessWidget {
                 BoostContainer.of(context).settings;
             FlutterBoost.singleton.close(
               settings.uniqueId,
-              result: <String, dynamic>{'result': 'data from second'},
+              result: <dynamic,dynamic>{'result': 'data from second'},
             );
           },
           child: const Text('Go back with result!'),
@@ -106,8 +106,8 @@ class FlutterRouteWidget extends StatelessWidget {
             ///例如：sample://nativePage?aaa=bbb
             onTap: () => FlutterBoost.singleton.open(
               'sample://nativePage',
-              urlParams: <String, dynamic>{
-                'query': <String, dynamic>{'aaa': 'bbb'}
+              urlParams: <dynamic,dynamic>{
+                'query': <dynamic,dynamic>{'aaa': 'bbb'}
               },
             ),
           ),
@@ -125,8 +125,8 @@ class FlutterRouteWidget extends StatelessWidget {
             ///例如：sample://nativePage?aaa=bbb
             onTap: () => FlutterBoost.singleton.open(
               'sample://flutterPage',
-              urlParams: <String, dynamic>{
-                'query': <String, dynamic>{'aaa': 'bbb'},
+              urlParams: <dynamic,dynamic>{
+                'query': <dynamic,dynamic>{'aaa': 'bbb'},
               },
             ),
           ),
@@ -169,7 +169,7 @@ class FlutterRouteWidget extends StatelessWidget {
 class FragmentRouteWidget extends StatelessWidget {
   const FragmentRouteWidget(this.params);
 
-  final Map<String, dynamic> params;
+  final Map<dynamic,dynamic> params;
 
   @override
   Widget build(BuildContext context) {

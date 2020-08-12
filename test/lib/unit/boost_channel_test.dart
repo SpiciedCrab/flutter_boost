@@ -23,10 +23,10 @@ void main() {
     response = null;
 
     test('sendEvent successfully', () async {
-      final Map<String, dynamic> msg1 = <String, dynamic>{};
+      final Map<dynamic,dynamic> msg1 = <dynamic,dynamic>{};
       BoostChannel().sendEvent('name', msg1);
 
-      final Map<String, dynamic> msg = <String, dynamic>{};
+      final Map<dynamic,dynamic> msg = <dynamic,dynamic>{};
       msg['name'] = 'name';
       msg['arguments'] = msg1;
 
@@ -37,7 +37,7 @@ void main() {
     });
 
     test('invokeMethod successfully', () async {
-      final Map<String, dynamic> msg = <String, dynamic>{};
+      final Map<dynamic,dynamic> msg = <dynamic,dynamic>{};
       msg['test'] = 'test';
       BoostChannel().invokeMethod<dynamic>('__event__1', msg);
 
@@ -48,7 +48,7 @@ void main() {
     });
 
     test('invokeListMethod successfully', () async {
-      final Map<String, dynamic> msg = <String, dynamic>{};
+      final Map<dynamic,dynamic> msg = <dynamic,dynamic>{};
       msg['test'] = 'test';
       await BoostChannel().invokeListMethod<dynamic>('__event__1', msg);
 
@@ -59,7 +59,7 @@ void main() {
     });
 
     test('invokeMapMethod successfully', () async {
-      final Map<String, dynamic> msg = <String, dynamic>{};
+      final Map<dynamic,dynamic> msg = <dynamic,dynamic>{};
       msg['test'] = 'test';
       BoostChannel().invokeMapMethod<dynamic, dynamic>('__event__1', msg);
 
@@ -70,7 +70,7 @@ void main() {
     });
 
     test('invokeMapMethod successfully', () async {
-      final Map<String, dynamic> msg = <String, dynamic>{};
+      final Map<dynamic,dynamic> msg = <dynamic,dynamic>{};
       msg['test'] = 'test';
       BoostChannel().invokeMapMethod<dynamic, dynamic>('__event__1', msg);
 
@@ -83,7 +83,7 @@ void main() {
     test('addEventListener successfully', () async {
       final VoidCallback test = BoostChannel().addEventListener(
         'addEventListener',
-        (String name, Map<String, dynamic> arguments) async => 'test',
+        (String name, Map<dynamic,dynamic> arguments) async => 'test',
       );
       print('xxx' + test.toString());
       expect(

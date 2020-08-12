@@ -52,16 +52,16 @@ class _FirstRouteWidgetState extends State<FirstRouteWidget> {
             RaisedButton(
               child: const Text('Open native page'),
               onPressed: () {
-                showModalBottomSheet<Map>(context: context, builder: (con){
-                  return Container(height: 300, width: 300, color: Colors.yellow,);
-                });
-//                print('open natve page!');
-//                FlutterBoost.singleton
-//                    .open('native')
-//                    .then((Map<String, dynamic> value) {
-//                  print(
-//                      'call me when page is finished. did recieve native route result $value');
+//                showModalBottomSheet<Map>(context: context, builder: (con){
+//                  return Container(height: 300, width: 300, color: Colors.yellow,);
 //                });
+                print('open natve page!');
+                FlutterBoost.singleton
+                    .open('native')
+                    .then((Map<dynamic,dynamic> value) {
+                  print(
+                      'call me when page is finished. did recieve native route result $value');
+                });
               },
             ),
             RaisedButton(
@@ -69,8 +69,8 @@ class _FirstRouteWidgetState extends State<FirstRouteWidget> {
               onPressed: () {
                 print('open FF page!');
                 FlutterBoost.singleton
-                    .open('firstFirst')
-                    .then((Map<String, dynamic> value) {
+                    .open('first')
+                    .then((Map<dynamic,dynamic> value) {
                   print(
                       'call me when page is finished. did recieve FF route result $value');
                 });
@@ -82,7 +82,7 @@ class _FirstRouteWidgetState extends State<FirstRouteWidget> {
                 print('open second page!');
                 FlutterBoost.singleton
                     .open('second')
-                    .then((Map<String, dynamic> value) {
+                    .then((Map<dynamic,dynamic> value) {
                   print(
                       'call me when page is finished. did recieve second route result $value');
                 });
@@ -93,9 +93,9 @@ class _FirstRouteWidgetState extends State<FirstRouteWidget> {
               onPressed: () {
                 print('Present second stateful page!');
                 FlutterBoost.singleton.open('secondStateful',
-                    urlParams: <String, dynamic>{
+                    urlParams: <dynamic,dynamic>{
                       'present': true
-                    }).then((Map<String, dynamic> value) {
+                    }).then((Map<dynamic,dynamic> value) {
                   print(
                       'call me when page is finished. did recieve second stateful route result $value');
                 });
@@ -106,9 +106,9 @@ class _FirstRouteWidgetState extends State<FirstRouteWidget> {
               onPressed: () {
                 print('Present second page!');
                 FlutterBoost.singleton.open('second',
-                    urlParams: <String, dynamic>{
+                    urlParams: <dynamic,dynamic>{
                       'present': true
-                    }).then((Map<String, dynamic> value) {
+                    }).then((Map<dynamic,dynamic> value) {
                   print(
                       'call me when page is finished. did recieve second route result $value');
                 });
@@ -171,7 +171,7 @@ class _FirstFirstRouteWidgetState extends State<FirstFirstRouteWidget> {
             print('open first page again!');
             FlutterBoost.singleton
                 .open('first')
-                .then((Map<String, dynamic> value) {
+                .then((Map<dynamic,dynamic> value) {
               print('did recieve first route result');
               print('did recieve first route result $value');
             });
@@ -199,7 +199,7 @@ class _EmbeddedFirstRouteWidgetState extends State<EmbeddedFirstRouteWidget> {
             print('open second page!');
             FlutterBoost.singleton
                 .open('second')
-                .then((Map<String, dynamic> value) {
+                .then((Map<dynamic,dynamic> value) {
               print(
                   'call me when page is finished. did recieve second route result $value');
             });
@@ -233,7 +233,7 @@ class _SecondStatefulRouteWidgetState extends State<SecondStatefulRouteWidget> {
             final BoostContainerSettings settings =
                 BoostContainer.of(context).settings;
             FlutterBoost.singleton.close(settings.uniqueId,
-                result: <String, dynamic>{'result': 'data from second'});
+                result: <dynamic,dynamic>{'result': 'data from second'});
           },
           child: const Text('Go back with result!'),
         ),
@@ -261,7 +261,7 @@ class SecondRouteWidget extends StatelessWidget {
                 BoostContainer.of(context).settings;
             FlutterBoost.singleton.close(
               settings.uniqueId,
-              result: <String, dynamic>{'result': 'data from second'},
+              result: <dynamic,dynamic>{'result': 'data from second'},
             );
           },
           child: const Text('Go back with result!'),
@@ -313,7 +313,7 @@ class PlatformRouteWidget extends StatelessWidget {
             print('open second page!');
             FlutterBoost.singleton
                 .open('second')
-                .then((Map<String, dynamic> value) {
+                .then((Map<dynamic,dynamic> value) {
               print(
                   'call me when page is finished. did recieve second route result $value');
             });
@@ -327,7 +327,7 @@ class PlatformRouteWidget extends StatelessWidget {
 class FlutterRouteWidget extends StatefulWidget {
   const FlutterRouteWidget({this.params, this.message});
 
-  final Map<String, dynamic> params;
+  final Map<dynamic,dynamic> params;
   final String message;
 
   @override
@@ -393,8 +393,8 @@ class _FlutterRouteWidgetState extends State<FlutterRouteWidget> {
                 /// 例如：sample://nativePage?aaa=bbb
                 onTap: () => FlutterBoost.singleton.open(
                   'sample://nativePage',
-                  urlParams: <String, dynamic>{
-                    'query': <String, dynamic>{'aaa': 'bbb'}
+                  urlParams: <dynamic,dynamic>{
+                    'query': <dynamic,dynamic>{'aaa': 'bbb'}
                   },
                 ),
               ),
@@ -413,8 +413,8 @@ class _FlutterRouteWidgetState extends State<FlutterRouteWidget> {
                 /// 例如：sample://nativePage?aaa=bbb
                 onTap: () => FlutterBoost.singleton.open(
                   'first',
-                  urlParams: <String, dynamic>{
-                    'query': <String, dynamic>{'aaa': 'bbb'}
+                  urlParams: <dynamic,dynamic>{
+                    'query': <dynamic,dynamic>{'aaa': 'bbb'}
                   },
                 ),
               ),
@@ -433,8 +433,8 @@ class _FlutterRouteWidgetState extends State<FlutterRouteWidget> {
                 /// 例如：sample://nativePage?aaa=bbb
                 onTap: () => FlutterBoost.singleton.open(
                   'second',
-                  urlParams: <String, dynamic>{
-                    'query': <String, dynamic>{'aaa': 'bbb'}
+                  urlParams: <dynamic,dynamic>{
+                    'query': <dynamic,dynamic>{'aaa': 'bbb'}
                   },
                 ),
               ),
@@ -453,8 +453,8 @@ class _FlutterRouteWidgetState extends State<FlutterRouteWidget> {
                 /// 例如：sample://nativePage?aaa=bbb
                 onTap: () => FlutterBoost.singleton.open(
                   'tab',
-                  urlParams: <String, dynamic>{
-                    'query': <String, dynamic>{'aaa': 'bbb'}
+                  urlParams: <dynamic,dynamic>{
+                    'query': <dynamic,dynamic>{'aaa': 'bbb'}
                   },
                 ),
               ),
@@ -473,8 +473,8 @@ class _FlutterRouteWidgetState extends State<FlutterRouteWidget> {
                 /// 例如：sample://nativePage?aaa=bbb
                 onTap: () => FlutterBoost.singleton.open(
                   'sample://flutterPage',
-                  urlParams: <String, dynamic>{
-                    'query': <String, dynamic>{'aaa': 'bbb'}
+                  urlParams: <dynamic,dynamic>{
+                    'query': <dynamic,dynamic>{'aaa': 'bbb'}
                   },
                 ),
               ),
@@ -537,7 +537,7 @@ class _FlutterRouteWidgetState extends State<FlutterRouteWidget> {
 class FragmentRouteWidget extends StatelessWidget {
   const FragmentRouteWidget(this.params);
 
-  final Map<String, dynamic> params;
+  final Map<dynamic,dynamic> params;
 
   @override
   Widget build(BuildContext context) {

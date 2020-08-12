@@ -26,7 +26,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 
 typedef PageBuilder = Widget Function(
-    String pageName, Map<String, dynamic> params, String uniqueId);
+    String pageName, Map<dynamic,dynamic> params, String uniqueId);
 
 class BoostPageRoute<T> extends MaterialPageRoute<T> {
   BoostPageRoute({
@@ -40,7 +40,7 @@ class BoostPageRoute<T> extends MaterialPageRoute<T> {
 
   final String pageName;
   final String uniqueId;
-  final Map<String, dynamic> params;
+  final Map<dynamic,dynamic> params;
   final bool animated;
 
   final Set<VoidCallback> backPressedListeners = <VoidCallback>{};

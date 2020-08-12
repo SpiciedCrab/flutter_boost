@@ -131,7 +131,7 @@ class BoostContainerState extends NavigatorState {
 
   String get name => widget.settings.name;
 
-  Map<String, dynamic> get params => widget.settings.params;
+  Map<dynamic,dynamic> get params => widget.settings.params;
 
   BoostContainerSettings get settings => widget.settings;
 
@@ -220,9 +220,9 @@ class BoostContainerState extends NavigatorState {
     if (canPop()) {
       super.pop<T>(result);
     } else {
-      if (T is Map<String, dynamic>) {
+      if (T is Map<dynamic,dynamic>) {
         FlutterBoost.singleton
-            .close(uniqueId, result: result as Map<String, dynamic>);
+            .close(uniqueId, result: result as Map<dynamic,dynamic>);
       } else {
         FlutterBoost.singleton.close(uniqueId);
       }
@@ -274,7 +274,7 @@ class BoostContainerSettings {
 
   final String uniqueId;
   final String name;
-  final Map<String, dynamic> params;
+  final Map<dynamic,dynamic> params;
   final WidgetBuilder builder;
 }
 
