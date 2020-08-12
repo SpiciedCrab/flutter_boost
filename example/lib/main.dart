@@ -26,6 +26,7 @@ class _MyAppState extends State<MyApp> {
       'secondStateful': (String pageName, Map<String, dynamic> params, String _) =>
           SecondStatefulRouteWidget(),
       'tab': (String pageName, Map<String, dynamic> params, String _) => TabRouteWidget(),
+      'tab2': (String pageName, Map<String, dynamic> params, String _) => TabRoute2Widget(),
       'platformView': (String pageName, Map<String, dynamic> params, String _) =>
           PlatformRouteWidget(),
       'flutterFragment': (String pageName, Map<String, dynamic> params, String _) =>
@@ -46,7 +47,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
         title: 'Flutter Boost example',
         builder: FlutterBoost.init(postPush: _onRoutePushed),
-        home: Container(color: Colors.white));
+        home: Container(color: Colors.red));
   }
 
   void _onRoutePushed(

@@ -52,13 +52,16 @@ class _FirstRouteWidgetState extends State<FirstRouteWidget> {
             RaisedButton(
               child: const Text('Open native page'),
               onPressed: () {
-                print('open natve page!');
-                FlutterBoost.singleton
-                    .open('native')
-                    .then((Map<String, dynamic> value) {
-                  print(
-                      'call me when page is finished. did recieve native route result $value');
+                showModalBottomSheet<Map>(context: context, builder: (con){
+                  return Container(height: 300, width: 300, color: Colors.yellow,);
                 });
+//                print('open natve page!');
+//                FlutterBoost.singleton
+//                    .open('native')
+//                    .then((Map<String, dynamic> value) {
+//                  print(
+//                      'call me when page is finished. did recieve native route result $value');
+//                });
               },
             ),
             RaisedButton(
@@ -160,6 +163,7 @@ class _FirstFirstRouteWidgetState extends State<FirstFirstRouteWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('First Route')),
+      backgroundColor: Colors.red,
       body: Center(
         child: RaisedButton(
           child: const Text('Open first route'),
@@ -271,6 +275,7 @@ class TabRouteWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.red,
       appBar: AppBar(title: const Text('Tab Route')),
       body: Center(
         child: RaisedButton(
@@ -283,6 +288,18 @@ class TabRouteWidget extends StatelessWidget {
     );
   }
 }
+
+class TabRoute2Widget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      appBar: AppBar(title: const Text('Tab 222222')),
+      body: Container()
+    );
+  }
+}
+
 
 class PlatformRouteWidget extends StatelessWidget {
   @override
