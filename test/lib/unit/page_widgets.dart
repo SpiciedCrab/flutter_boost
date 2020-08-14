@@ -30,7 +30,7 @@ class FirstRouteWidget extends StatelessWidget {
               onPressed: () {
                 print('Present second page!');
                 FlutterBoost.singleton.open('second',
-                    urlParams: <dynamic,dynamic>{
+                    urlParams: <String, dynamic>{
                       'present': true
                     }).then((Map<dynamic, dynamic> value) {
                   print(
@@ -82,7 +82,7 @@ class SecondRouteWidget extends StatelessWidget {
             final BoostContainerSettings settings =
                 BoostContainer.of(context).settings;
             FlutterBoost.singleton.close(settings.uniqueId,
-                result: <dynamic,dynamic>{'result': 'data from second'});
+                result: <String, dynamic>{'result': 'data from second'});
           },
           child: const Text('Go back with result!'),
         ),
@@ -113,7 +113,7 @@ class TabRouteWidget extends StatelessWidget {
 class FlutterRouteWidget extends StatefulWidget {
   const FlutterRouteWidget({this.params, this.message});
 
-  final Map<dynamic,dynamic> params;
+  final Map<String, dynamic> params;
   final String message;
 
   @override
@@ -179,8 +179,8 @@ class _FlutterRouteWidgetState extends State<FlutterRouteWidget> {
                 ///例如：sample://nativePage?aaa=bbb
                 onTap: () => FlutterBoost.singleton.open(
                   'sample://nativePage',
-                  urlParams: <dynamic,dynamic>{
-                    'query': <dynamic,dynamic>{'aaa': 'bbb'},
+                  urlParams: <String, dynamic>{
+                    'query': <String, dynamic>{'aaa': 'bbb'},
                   },
                 ),
               ),
@@ -199,8 +199,8 @@ class _FlutterRouteWidgetState extends State<FlutterRouteWidget> {
                 ///例如：sample://nativePage?aaa=bbb
                 onTap: () => FlutterBoost.singleton.open(
                   'first',
-                  urlParams: <dynamic,dynamic>{
-                    'query': <dynamic,dynamic>{'aaa': 'bbb'},
+                  urlParams: <String, dynamic>{
+                    'query': <String, dynamic>{'aaa': 'bbb'},
                   },
                 ),
               ),
@@ -219,8 +219,8 @@ class _FlutterRouteWidgetState extends State<FlutterRouteWidget> {
                 ///例如：sample://nativePage?aaa=bbb
                 onTap: () => FlutterBoost.singleton.open(
                   'second',
-                  urlParams: <dynamic,dynamic>{
-                    'query': <dynamic,dynamic>{'aaa': 'bbb'},
+                  urlParams: <String, dynamic>{
+                    'query': <String, dynamic>{'aaa': 'bbb'},
                   },
                 ),
               ),
@@ -239,8 +239,8 @@ class _FlutterRouteWidgetState extends State<FlutterRouteWidget> {
                 ///例如：sample://nativePage?aaa=bbb
                 onTap: () => FlutterBoost.singleton.open(
                   'tab',
-                  urlParams: <dynamic,dynamic>{
-                    'query': <dynamic,dynamic>{'aaa': 'bbb'}
+                  urlParams: <String, dynamic>{
+                    'query': <String, dynamic>{'aaa': 'bbb'}
                   },
                 ),
               ),
@@ -259,8 +259,8 @@ class _FlutterRouteWidgetState extends State<FlutterRouteWidget> {
                 ///例如：sample://nativePage?aaa=bbb
                 onTap: () => FlutterBoost.singleton.open(
                   'sample://flutterPage',
-                  urlParams: <dynamic,dynamic>{
-                    'query': <dynamic,dynamic>{'aaa': 'bbb'}
+                  urlParams: <String, dynamic>{
+                    'query': <String, dynamic>{'aaa': 'bbb'}
                   },
                 ),
               ),
@@ -314,7 +314,7 @@ class _FlutterRouteWidgetState extends State<FlutterRouteWidget> {
 class FragmentRouteWidget extends StatelessWidget {
   const FragmentRouteWidget(this.params);
 
-  final Map<dynamic,dynamic> params;
+  final Map<String, dynamic> params;
 
   @override
   Widget build(BuildContext context) {

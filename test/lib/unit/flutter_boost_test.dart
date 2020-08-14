@@ -8,7 +8,7 @@ void main() {
 
   test('test onMethodCall', () async {
     FlutterBoost.singleton.registerDefaultPageBuilder(
-        (String pageName, Map<dynamic,dynamic> params, String _) =>
+        (String pageName, Map<String, dynamic> params, String _) =>
             Container());
     FlutterBoost.singleton.addContainerObserver(
       (ContainerOperation operation, BoostContainerSettings settings) {},
@@ -32,8 +32,8 @@ void main() {
     }
     try {
       FlutterBoost.singleton.closeCurrent(
-        result: <dynamic,dynamic>{},
-        exts: <dynamic,dynamic>{},
+        result: <String, dynamic>{},
+        exts: <String, dynamic>{},
       );
     } catch (e) {
       expect(e, isNoSuchMethodError);
@@ -42,8 +42,8 @@ void main() {
     try {
       FlutterBoost.singleton.closeByContext(
         null,
-        result: <dynamic,dynamic>{},
-        exts: <dynamic,dynamic>{},
+        result: <String, dynamic>{},
+        exts: <String, dynamic>{},
       );
     } catch (e) {
       expect(e, isNoSuchMethodError);

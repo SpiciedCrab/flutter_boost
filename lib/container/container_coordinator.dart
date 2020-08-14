@@ -40,7 +40,7 @@ class ContainerCoordinator {
     channel
       ..addEventListener(
         'lifecycle',
-        (String name, Map<dynamic,dynamic> arguments) =>
+        (String name, Map<String, dynamic> arguments) =>
             _onChannelEvent(arguments),
       )
       ..addMethodHandler((MethodCall call) => _onMethodCall(call));
@@ -55,7 +55,7 @@ class ContainerCoordinator {
 
   BoostContainerSettings _createContainerSettings(
     String name,
-    Map<dynamic,dynamic> params,
+    Map<String, dynamic> params,
     String pageId,
   ) {
     Widget page;
@@ -103,8 +103,8 @@ class ContainerCoordinator {
   }
 
   Future<dynamic> _onChannelEvent(dynamic event) {
-    if (event is Map<dynamic,dynamic>) {
-      final Map<dynamic,dynamic> map = event;
+    if (event is Map<String, dynamic>) {
+      final Map<String, dynamic> map = event;
       final String type = map['type'] as String;
 
       Logger.log('onEvent $type');
@@ -143,9 +143,9 @@ class ContainerCoordinator {
     Logger.log('onMetohdCall ${call.method}');
 
     final String pageName = call.arguments['pageName'] as String;
-    final Map<dynamic,dynamic> params =
+    final Map<String, dynamic> params =
         (call.arguments['params'] as Map<dynamic, dynamic>)
-            ?.cast<dynamic,dynamic>();
+            ?.cast<String, dynamic>();
     final String uniqueId = call.arguments['uniqueId'] as String;
 
     switch (call.method) {
@@ -176,7 +176,7 @@ class ContainerCoordinator {
 
   bool _nativeContainerWillShow(
     String name,
-    Map<dynamic,dynamic> params,
+    Map<String, dynamic> params,
     String pageId,
   ) {
     if (FlutterBoost.containerManager?.containsContainer(pageId) != true) {
@@ -202,7 +202,7 @@ class ContainerCoordinator {
 
   bool nativeContainerDidShow(
     String name,
-    Map<dynamic,dynamic> params,
+    Map<String, dynamic> params,
     String pageId,
   ) {
     FlutterBoost.containerManager
@@ -237,7 +237,7 @@ class ContainerCoordinator {
 
   bool _nativeContainerWillDisappear(
     String name,
-    Map<dynamic,dynamic> params,
+    Map<String, dynamic> params,
     String pageId,
   ) {
     performContainerLifeCycle(
@@ -249,7 +249,7 @@ class ContainerCoordinator {
 
   bool _nativeContainerDidDisappear(
     String name,
-    Map<dynamic,dynamic> params,
+    Map<String, dynamic> params,
     String pageId,
   ) {
     performContainerLifeCycle(
@@ -261,7 +261,7 @@ class ContainerCoordinator {
 
   bool _nativeContainerDidInit(
     String name,
-    Map<dynamic,dynamic> params,
+    Map<String, dynamic> params,
     String pageId,
   ) {
     performContainerLifeCycle(
@@ -272,7 +272,7 @@ class ContainerCoordinator {
   }
 
   bool _nativeContainerWillDealloc(
-      String name, Map<dynamic,dynamic> params, String pageId) {
+      String name, Map<String, dynamic> params, String pageId) {
     try {
       performContainerLifeCycle(
         _createContainerSettings(name, params, pageId),

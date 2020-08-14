@@ -28,7 +28,7 @@ import 'dart:ui';
 import 'package:flutter/services.dart';
 
 typedef EventListener = Future<dynamic> Function(
-    String name, Map<dynamic,dynamic> arguments);
+    String name, Map<String, dynamic> arguments);
 
 typedef MethodHandler = Future<dynamic> Function(MethodCall call);
 
@@ -37,9 +37,9 @@ class BoostChannel {
     _methodChannel.setMethodCallHandler((MethodCall call) {
       if (call.method == '__event__') {
         final String name = call.arguments['name'] as String;
-        final Map<dynamic,dynamic> arg =
+        final Map<String, dynamic> arg =
             (call.arguments['arguments'] as Map<dynamic, dynamic>)
-                ?.cast<dynamic,dynamic>();
+                ?.cast<String, dynamic>();
         final List<EventListener> list = _eventListeners[name];
         if (list != null) {
           for (final EventListener l in list) {
@@ -62,14 +62,14 @@ class BoostChannel {
       <String, List<EventListener>>{};
   final Set<MethodHandler> _methodHandlers = <MethodHandler>{};
 
-  void sendEvent(String name, Map<dynamic,dynamic> arguments) {
+  void sendEvent(String name, Map<String, dynamic> arguments) {
     if (name == null) {
       return;
     }
 
-    arguments ??= <dynamic,dynamic>{};
+    arguments ??= <String, dynamic>{};
 
-    final Map<dynamic,dynamic> msg = <dynamic,dynamic>{};
+    final Map<String, dynamic> msg = <String, dynamic>{};
     msg['name'] = name;
     msg['arguments'] = arguments;
     _methodChannel.invokeMethod<dynamic>('__event__', msg);

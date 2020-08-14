@@ -137,7 +137,7 @@ class ContainerManagerState extends State<BoostContainerManager> {
   void _onShownContainerChanged(String old, String now) {
     Logger.log('onShownContainerChanged old:$old now:$now');
 
-    final Map<dynamic,dynamic> properties = <dynamic,dynamic>{};
+    final Map<String, dynamic> properties = <String, dynamic>{};
     properties['newName'] = now;
     properties['oldName'] = old;
 

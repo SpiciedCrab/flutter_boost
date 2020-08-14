@@ -36,15 +36,15 @@ export 'container/boost_container.dart';
 export 'container/container_manager.dart';
 
 typedef PageBuilder = Widget Function(
-    String pageName, Map<dynamic,dynamic> params, String uniqueId);
+    String pageName, Map<String, dynamic> params, String uniqueId);
 
 typedef PrePushRoute = Route<T> Function<T>(String url, String uniqueId,
-    Map<dynamic,dynamic> params, Route<dynamic> route);
+    Map<String, dynamic> params, Route<dynamic> route);
 
 typedef PostPushRoute = void Function(
   String url,
   String uniqueId,
-  Map<dynamic,dynamic> params,
+  Map<String, dynamic> params,
   Route<dynamic> route,
   Future<dynamic> result,
 );
@@ -71,7 +71,7 @@ class FlutterBoost {
       singleton.channel
           .invokeMethod<Map<dynamic, dynamic>>('pageOnStart')
           .then((Map<dynamic, dynamic> _pageInfo) {
-        final Map<dynamic,dynamic> pageInfo = _pageInfo?.cast<dynamic,dynamic>();
+        final Map<String, dynamic> pageInfo = _pageInfo?.cast<String, dynamic>();
         if (pageInfo?.isEmpty ?? true) {
           return;
         }
@@ -81,7 +81,7 @@ class FlutterBoost {
           ContainerCoordinator.singleton.nativeContainerDidShow(
             pageInfo['name'] as String,
             (pageInfo['params'] as Map<dynamic, dynamic>)
-                ?.cast<dynamic,dynamic>(),
+                ?.cast<String, dynamic>(),
             pageInfo['uniqueId'] as String,
           );
         }
@@ -140,10 +140,10 @@ class FlutterBoost {
 
   Future<Map<dynamic, dynamic>> open(
     String url, {
-    Map<dynamic,dynamic> urlParams,
-    Map<dynamic,dynamic> exts,
+    Map<String, dynamic> urlParams,
+    Map<String, dynamic> exts,
   }) {
-    final Map<dynamic,dynamic> properties = <dynamic,dynamic>{};
+    final Map<String, dynamic> properties = <String, dynamic>{};
     properties['url'] = url;
     properties['urlParams'] = urlParams;
     properties['exts'] = exts;
@@ -152,15 +152,15 @@ class FlutterBoost {
 
   Future<bool> close(
     String id, {
-    Map<dynamic,dynamic> result,
-    Map<dynamic,dynamic> exts,
+    Map<String, dynamic> result,
+    Map<String, dynamic> exts,
   }) {
     assert(id != null);
 
     final BoostContainerSettings settings = containerManager?.onstageSettings;
-    final Map<dynamic,dynamic> properties = <dynamic,dynamic>{};
+    final Map<String, dynamic> properties = <String, dynamic>{};
 
-    exts ??= <dynamic,dynamic>{};
+    exts ??= <String, dynamic>{};
 
     exts['params'] = settings.params;
 
@@ -181,11 +181,11 @@ class FlutterBoost {
   }
 
   Future<bool> closeCurrent({
-    Map<dynamic,dynamic> result,
-    Map<dynamic,dynamic> exts,
+    Map<String, dynamic> result,
+    Map<String, dynamic> exts,
   }) {
     final BoostContainerSettings settings = containerManager?.onstageSettings;
-    exts ??= <dynamic,dynamic>{};
+    exts ??= <String, dynamic>{};
     exts['params'] = settings.params;
     if (!exts.containsKey('animated')) {
       exts['animated'] = true;
@@ -195,11 +195,11 @@ class FlutterBoost {
 
   Future<bool> closeByContext(
     BuildContext context, {
-    Map<dynamic,dynamic> result,
-    Map<dynamic,dynamic> exts,
+    Map<String, dynamic> result,
+    Map<String, dynamic> exts,
   }) {
     final BoostContainerSettings settings = containerManager?.onstageSettings;
-    exts ??= <dynamic,dynamic>{};
+    exts ??= <String, dynamic>{};
     exts['params'] = settings.params;
     if (!exts.containsKey('animated')) {
       exts['animated'] = true;

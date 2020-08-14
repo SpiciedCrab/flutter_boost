@@ -17,17 +17,17 @@ class _MyAppState extends State<MyApp> {
     super.initState();
 
     FlutterBoost.singleton.registerPageBuilders(<String, PageBuilder>{
-      'embeded': (String pageName, Map<dynamic,dynamic> params, _) =>
+      'embeded': (String pageName, Map<String, dynamic> params, _) =>
           EmbededFirstRouteWidget(),
-      'first': (String pageName, Map<dynamic,dynamic> params, _) =>
+      'first': (String pageName, Map<String, dynamic> params, _) =>
           FirstRouteWidget(),
-      'second': (String pageName, Map<dynamic,dynamic> params, _) =>
+      'second': (String pageName, Map<String, dynamic> params, _) =>
           SecondRouteWidget(),
-      'tab': (String pageName, Map<dynamic,dynamic> params, _) =>
+      'tab': (String pageName, Map<String, dynamic> params, _) =>
           TabRouteWidget(),
-      'flutterFragment': (String pageName, Map<dynamic,dynamic> params, _) =>
+      'flutterFragment': (String pageName, Map<String, dynamic> params, _) =>
           FragmentRouteWidget(params),
-      'flutterPage': (String pageName, Map<dynamic,dynamic> params, _) {
+      'flutterPage': (String pageName, Map<String, dynamic> params, _) {
         print('flutterPage params:$params');
 
         return FlutterRouteWidget(params: params);
@@ -48,7 +48,7 @@ class _MyAppState extends State<MyApp> {
   void _onRoutePushed(
     String pageName,
     String uniqueId,
-    Map<dynamic,dynamic> params,
+    Map<String, dynamic> params,
     Route<dynamic> route,
     Future<dynamic> _,
   ) {}
@@ -87,7 +87,7 @@ void main() {
     );
     //open firt page
     ContainerCoordinator.singleton
-        .nativeContainerDidShow('first', <dynamic,dynamic>{}, '1000000');
+        .nativeContainerDidShow('first', <String, dynamic>{}, '1000000');
 
     await tester.pump(const Duration(seconds: 1));
 
@@ -95,7 +95,7 @@ void main() {
 
     //open second page  firt(1000000)->second(2000000)
     ContainerCoordinator.singleton
-        .nativeContainerDidShow('second', <dynamic,dynamic>{}, '2000000');
+        .nativeContainerDidShow('second', <String, dynamic>{}, '2000000');
 
     await tester.pump(const Duration(seconds: 1));
 
@@ -112,7 +112,7 @@ void main() {
 
     // second page ,but pageId is 2000001    firt(1000000)->second(2000001)
     ContainerCoordinator.singleton
-        .nativeContainerDidShow('second', <dynamic,dynamic>{}, '2000001');
+        .nativeContainerDidShow('second', <String, dynamic>{}, '2000001');
 
     await tester.pump(const Duration(seconds: 1));
 
@@ -122,7 +122,7 @@ void main() {
 
     //reopen firt page   second(2000001)->firt(1000000)
     ContainerCoordinator.singleton
-        .nativeContainerDidShow('first', <dynamic,dynamic>{}, '1000000');
+        .nativeContainerDidShow('first', <String, dynamic>{}, '1000000');
 
     await tester.pump(const Duration(seconds: 1));
 
@@ -132,7 +132,7 @@ void main() {
 
     // reopen second page and  pageId is 2000001    firt(1000000)->second(2000001)
     ContainerCoordinator.singleton
-        .nativeContainerDidShow('second', <dynamic,dynamic>{}, '2000001');
+        .nativeContainerDidShow('second', <String, dynamic>{}, '2000001');
 
     await tester.pump(const Duration(seconds: 1));
 
@@ -149,7 +149,7 @@ void main() {
 
     // open  second(2000003)
     ContainerCoordinator.singleton
-        .nativeContainerDidShow('second', <dynamic,dynamic>{}, '2000003');
+        .nativeContainerDidShow('second', <String, dynamic>{}, '2000003');
 
     await tester.idle();
 

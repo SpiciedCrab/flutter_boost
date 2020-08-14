@@ -78,9 +78,9 @@ class _MyAppState extends State<MyApp> {
     super.initState();
 
     FlutterBoost.singleton.registerPageBuilders(<String, PageBuilder>{
-      'first': (String pageName, Map<dynamic,dynamic> params, String _) =>
+      'first': (String pageName, Map<String, dynamic> params, String _) =>
           FirstRouteWidget(),
-      'second': (String pageName, Map<dynamic,dynamic> params, String _) =>
+      'second': (String pageName, Map<String, dynamic> params, String _) =>
           SecondRouteWidget(),
     });
   }
@@ -124,7 +124,7 @@ void main() {
           FlutterBoost.singleton.registerPageBuilders(
             <String, PageBuilder>{
               'context':
-                  (String pageName, Map<dynamic,dynamic> params, String _) =>
+                  (String pageName, Map<String, dynamic> params, String _) =>
                       Builder(
                         builder: (BuildContext context) {
                           return FloatingActionButton(
@@ -147,7 +147,7 @@ void main() {
           //open context page
           ContainerCoordinator.singleton.nativeContainerDidShow(
             'context',
-            <dynamic,dynamic>{},
+            <String, dynamic>{},
             '1000000',
           );
 
@@ -204,7 +204,7 @@ void main() {
 
           FlutterBoost.singleton.registerPageBuilders(
             <String, PageBuilder>{
-              'context': (String pageName, Map<dynamic,dynamic> params, _) =>
+              'context': (String pageName, Map<String, dynamic> params, _) =>
                   Builder(
                     builder: (BuildContext context) {
                       return FloatingActionButton(
@@ -226,7 +226,7 @@ void main() {
 
           //open context page
           ContainerCoordinator.singleton.nativeContainerDidShow(
-              'context', <dynamic,dynamic>{}, '1000000');
+              'context', <String, dynamic>{}, '1000000');
 
           await tester.pump(const Duration(seconds: 1));
 
@@ -257,7 +257,7 @@ void main() {
 
         FlutterBoost.singleton.registerPageBuilders(
           <String, PageBuilder>{
-            'context': (String pageName, Map<dynamic,dynamic> params, _) =>
+            'context': (String pageName, Map<String, dynamic> params, _) =>
                 Builder(
                   builder: (BuildContext context) {
                     return FloatingActionButton(
@@ -279,7 +279,7 @@ void main() {
 
         //open first context page
         ContainerCoordinator.singleton
-            .nativeContainerDidShow('context', <dynamic,dynamic>{}, '1000000');
+            .nativeContainerDidShow('context', <String, dynamic>{}, '1000000');
 
         await tester.pump(const Duration(seconds: 1));
 
@@ -294,7 +294,7 @@ void main() {
 
         //open second context page
         ContainerCoordinator.singleton
-            .nativeContainerDidShow('context', <dynamic,dynamic>{}, '2000000');
+            .nativeContainerDidShow('context', <String, dynamic>{}, '2000000');
 
         await tester.pump(const Duration(seconds: 1));
 
