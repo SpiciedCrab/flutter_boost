@@ -174,6 +174,7 @@
                   result:resultData
                     exts:exts
               completion:completion];
+    [self attachToPreviousContainer];
     
     if(_pageResultCallbacks[uniqueId]){
         void (^cb)(NSDictionary *) = _pageResultCallbacks[uniqueId];
