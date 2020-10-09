@@ -7,6 +7,7 @@ import android.text.Editable;
 import android.text.InputType;
 import android.text.Selection;
 import android.view.View;
+import android.os.Bundle;
 import android.view.inputmethod.BaseInputConnection;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
@@ -98,6 +99,17 @@ public class XTextInputPlugin {
             public void clearClient() {
                 clearTextInputClient();
             }
+
+            @Override
+            public void sendAppPrivateCommand(String action, Bundle data) {
+                
+            }
+
+            @Override
+            public void finishAutofillContext(boolean shouldSave) {
+                
+            }
+
         });
     }
 

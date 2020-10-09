@@ -84,6 +84,11 @@ public class XPlatformPlugin {
             XPlatformPlugin.this.setClipboardData(text);
         }
 
+        @Override
+        public boolean clipboardHasStrings() {
+            return XPlatformPlugin.this.clipboardHasStrings();
+        }
+
 //        @Override
 //        public List<Rect> getSystemGestureExclusionRects() {
 //            return XPlatformPlugin.this.getSystemGestureExclusionRects();
@@ -285,6 +290,17 @@ public class XPlatformPlugin {
         ClipboardManager clipboard = (ClipboardManager) activity.getSystemService(Context.CLIPBOARD_SERVICE);
         ClipData clip = ClipData.newPlainText("text label?", text);
         clipboard.setPrimaryClip(clip);
+    }
+
+    private boolean clipboardHasStrings() {
+        ClipboardManager clipboard = (ClipboardManager) activity.getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = clipboard.getPrimaryClip();
+        ClipData.Item item = clip.getItemAt(0);
+        if(item != null && item.getText() != null && item.getText().toString() != null){
+            return true;
+        }else {
+            return false;
+        }
     }
 
 
