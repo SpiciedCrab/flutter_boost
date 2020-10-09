@@ -98,6 +98,12 @@ public class XTextInputPlugin {
             public void clearClient() {
                 clearTextInputClient();
             }
+
+            @Override
+            public void sendAppPrivateCommand(String action, Bundle data) {
+                
+            }
+
         });
     }
 
