@@ -85,7 +85,7 @@ public class XPlatformPlugin {
         }
 
         @Override
-        public boolean clipboardHasStrings()() {
+        public boolean clipboardHasStrings() {
             return XPlatformPlugin.this.clipboardHasStrings();
         }
 
